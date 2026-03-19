@@ -26,7 +26,6 @@ function AdminPanel() {
       const data = await res.json();
       setReviews(data);
     } catch (error) {
-      alert("Error fetching reviews ❌");
       console.error(error);
     }
   };
@@ -38,7 +37,6 @@ function AdminPanel() {
       const data = await res.json();
       setBusinesses(data);
     } catch (error) {
-      alert("Error fetching businesses ❌");
       console.error(error);
     } finally {
       setLoading(false);
