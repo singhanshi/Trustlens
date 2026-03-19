@@ -1,4 +1,4 @@
-# Admin Panel
+# Admin Panel (Contributor - Shakya Kumari)
 
 ## Overview
 
