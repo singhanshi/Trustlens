@@ -1,4 +1,4 @@
-#  Database Setup
+#  Database Setup (Contributor - Manvi Verma)
 
 This directory contains the **database configuration and server setup** for the TrustLens crowdsourced review platform.
 
