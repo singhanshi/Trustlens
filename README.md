@@ -119,35 +119,6 @@ Stores user reviews and ratings.
 * No authentication system implemented
 * No API routes for CRUD operations
 
----
-
-##  Suggested Improvements
-
-To align with the full platform requirements:
-
-* Add `status` field in reviews:
-
-  ```sql
-  status TEXT DEFAULT 'pending'
-  ```
-
-* Add review text:
-
-  ```sql
-  text TEXT
-  ```
-
-* Add business approval system:
-
-  ```sql
-  status TEXT DEFAULT 'pending'
-  ```
-
-* Create API routes:
-
-  * Fetch pending reviews
-  * Approve/reject reviews
-  * Fetch businesses
 
 ---
 
@@ -182,7 +153,7 @@ It serves as the **core data layer** for the TrustLens platform.
 
 ---
 
-##  Contributors
+##  Contributions
 
 Backend & Database handled as part of the hackathon team collaboration.
 
