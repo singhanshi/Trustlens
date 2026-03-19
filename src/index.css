@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -109,3 +110,8 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> d04594126d881fe58534011f61c5a2f86b5726e3
