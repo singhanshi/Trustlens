@@ -1,156 +1,3 @@
-/*
-Only user review
-import React, { useEffect, useState } from "react";
-
-function AdminPanel() {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const BASE_URL = "http://localhost:5000"; // backend URL
-
-  // Fetch pending reviews
-  const fetchReviews = async () => {
-    try {
-      const res = await fetch(`${BASE_URL}/reviews/pending`);
-      const data = await res.json();
-      setReviews(data);
-    } catch (error) {
-      console.error("Error fetching reviews:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchReviews();
-  }, []);
-
-  // Approve review
-  const handleApprove = async (id) => {
-    try {
-      await fetch(`${BASE_URL}/reviews/${id}/approve`, {
-        method: "POST",
-      });
-
-      // remove from UI instantly
-      setReviews((prev) => prev.filter((r) => r._id !== id));
-    } catch (error) {
-      console.error("Error approving review:", error);
-    }
-  };
-
-  // Reject review
-  const handleReject = async (id) => {
-    try {
-      await fetch(`${BASE_URL}/reviews/${id}/reject`, {
-        method: "POST",
-      });
-
-      setReviews((prev) => prev.filter((r) => r._id !== id));
-    } catch (error) {
-      console.error("Error rejecting review:", error);
-    }
-  };
-
-  return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Admin Dashboard</h1>
-
-      <h3 style={styles.subHeading}>
-        Pending Reviews: {reviews.length}
-      </h3>
-
-      {loading ? (
-        <p style={styles.message}>Loading reviews...</p>
-      ) : reviews.length === 0 ? (
-        <p style={styles.message}>No pending reviews</p>
-      ) : (
-        reviews.map((review) => (
-          <div key={review._id} style={styles.card}>
-            <h3>{review.businessName || "Business Name"}</h3>
-            <p><strong>User:</strong> {review.userName || "User"}</p>
-            <p><strong>Review:</strong> {review.text}</p>
-            <p><strong>Rating:</strong> ⭐ {review.rating}</p>
-
-            <div style={styles.buttonContainer}>
-              <button
-                style={styles.approveBtn}
-                onClick={() => handleApprove(review._id)}
-              >
-                Approve
-              </button>
-
-              <button
-                style={styles.rejectBtn}
-                onClick={() => handleReject(review._id)}
-              >
-                Reject
-              </button>
-            </div>
-          </div>
-        ))
-      )}
-    </div>
-  );
-}
-
-// 🎨 Styling
-const styles = {
-  container: {
-    padding: "20px",
-    fontFamily: "Arial, sans-serif",
-    backgroundColor: "#acd8eb",
-    minHeight: "100vh",
-  },
-  heading: {
-    textAlign: "center",
-    fontSize: "40px",
-    fontWeight: "bold"
-  },
-  subHeading: {
-    textAlign: "center",
-    marginBottom: "20px",
-    color: "#555",
-  },
-  message: {
-    textAlign: "center",
-    fontSize: "18px",
-  },
-  card: {
-    background: "#f4f6f8",
-    padding: "15px",
-    margin: "10px auto",
-    borderRadius: "10px",
-    width: "60%",
-    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-  },
-  buttonContainer: {
-    marginTop: "10px",
-    display: "flex",
-    gap: "10px",
-  },
-  approveBtn: {
-    backgroundColor: "green",
-    color: "white",
-    border: "none",
-    padding: "8px 12px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
-  rejectBtn: {
-    backgroundColor: "red",
-    color: "white",
-    border: "none",
-    padding: "8px 12px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
-};
-
-export default AdminPanel;
-*/
-
-
 import React, { useEffect, useState } from "react";
 
 function AdminPanel() {
@@ -162,7 +9,7 @@ function AdminPanel() {
 
   const BASE_URL = "http://localhost:3000";
 
-  // 🔐 Admin Login
+  //Admin Login
   const handleLogin = () => {
     const email = prompt("Enter admin email:");
     if (email === "admin@gmail.com") {
@@ -172,7 +19,7 @@ function AdminPanel() {
     }
   };
 
-  // 📥 Fetch Reviews
+  //Fetch Reviews
   const fetchReviews = async () => {
     try {
       const res = await fetch(`${BASE_URL}/reviews/pending`);
@@ -184,7 +31,7 @@ function AdminPanel() {
     }
   };
 
-  // 📥 Fetch Businesses
+  //Fetch Businesses
   const fetchBusinesses = async () => {
     try {
       const res = await fetch(`${BASE_URL}/business/pending`);
@@ -205,7 +52,7 @@ function AdminPanel() {
     }
   }, [isAdmin]);
 
-  // ✅ Approve Review
+  //Approve Review
   const handleApprove = async (id) => {
     try {
       await fetch(`${BASE_URL}/reviews/${id}/approve`, {
@@ -217,7 +64,7 @@ function AdminPanel() {
     }
   };
 
-  // ❌ Reject Review
+  //Reject Review
   const handleReject = async (id) => {
     try {
       await fetch(`${BASE_URL}/reviews/${id}/reject`, {
@@ -229,7 +76,7 @@ function AdminPanel() {
     }
   };
 
-  // ✅ Approve Business
+  //Approve Business
   const approveBusiness = async (id) => {
     try {
       await fetch(`${BASE_URL}/business/${id}/approve`, {
@@ -241,7 +88,7 @@ function AdminPanel() {
     }
   };
 
-  // ❌ Reject Business
+  //Reject Business
   const rejectBusiness = async (id) => {
     try {
       await fetch(`${BASE_URL}/business/${id}/reject`, {
@@ -253,7 +100,7 @@ function AdminPanel() {
     }
   };
 
-  // 🔐 Login Screen
+  //Login Screen
   if (!isAdmin) {
     return (
       <div style={styles.center}>
@@ -269,7 +116,7 @@ function AdminPanel() {
     <div style={styles.container}>
       <h1 style={styles.heading}>Admin Dashboard</h1>
 
-      {/* 🔄 Tabs */}
+      {/* Tabs */}
       <div style={styles.tabContainer}>
         <button
           style={
@@ -298,7 +145,7 @@ function AdminPanel() {
         <p style={styles.message}>Loading...</p>
       ) : (
         <>
-          {/* 🧾 REVIEWS TAB */}
+          {/* REVIEWS TAB */}
           {activeTab === "reviews" && (
             <div style={styles.section}>
               <h2>Pending Reviews ({reviews.length})</h2>
@@ -332,7 +179,7 @@ function AdminPanel() {
             </div>
           )}
 
-          {/* 🏢 BUSINESSES TAB */}
+          {/* BUSINESSES TAB */}
           {activeTab === "businesses" && (
             <div style={styles.section}>
               <h2>Pending Businesses ({businesses.length})</h2>
@@ -369,7 +216,7 @@ function AdminPanel() {
   );
 }
 
-// 🎨 Styling
+// Styling
 const styles = {
   container: {
     padding: "20px",
